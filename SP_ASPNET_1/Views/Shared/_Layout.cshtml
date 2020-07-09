@@ -1,0 +1,65 @@
+﻿@using SP_ASPNET_1.BusinessLogic
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title @(ViewBag.Title != null ? "-" : "") .NET Developer Challenge</title>
+    @Styles.Render("~/Content/css")
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
+    @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>*@
+    @*@Styles.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__navbar">
+            <img #logo src="~/Content/images/logo.png" /> <span class="spacer"></span>
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Index", "Home")" class="@(@Html.IsActive("Home", "Index"))">HOME</a></li>
+                    <li>
+                        <a href="@Url.Action("About", "Home")" class="@(@Html.IsActive("Home", "About"))">ABOUT</a>
+                        <ul>
+                            <li><a href="@Url.Action("Product", "Home")" class="@(@Html.IsActive("Home", "Product"))">PRODUCT</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "BlogPost")" class="@(@Html.IsActive("BlogPost", "Index"))">BLOG</a>
+                        <ul>
+                            <li><a href="@Url.Action("RandomPost", "BlogPost")" class="@(@Html.IsActive("BlogPost", "RandomPost"))">RANDOM POST</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Contact", "Home")" class="@(@Html.IsActive("Home", "Contact"))">CONTACT</a></li>
+                    <li><a href="@Url.Action("Index", "UserAccount")" class="@(@Html.IsActive("UserAccount", "Index"))">USER ACCOUNT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    @RenderBody()
+    <footer>
+        <div>
+            <div class="container">
+                <div class="social">
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="googleplus"></a>
+                    <a href="#" class="pinterest"></a> <a href="#" class="twitter"></a>
+                </div>
+                <p>© 2020 BBS</p>
+            </div>
+        </div>
+    </footer>
+    
+    @Scripts.Render("~/bundles/blogPost")
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>
